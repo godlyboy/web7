@@ -8,7 +8,6 @@ else {
 this.crslRoot = document.querySelector('.ant-carousel')
 };
 
-// Carousel objects
 this.crslList = this.crslRoot.querySelector('.ant-carousel-list');
 this.crslElements = this.crslList.querySelectorAll('.ant-carousel-element');
 this.crslElemFirst = this.crslList.querySelector('.ant-carousel-element');
@@ -16,14 +15,12 @@ this.leftArrow = this.crslRoot.querySelector('div.ant-carousel-arrow-left');
 this.rightArrow = this.crslRoot.querySelector('div.ant-carousel-arrow-right');
 this.indicatorDots = this.crslRoot.querySelector('div.ant-carousel-dots');
 
-// Initialization
 this.options = Ant.defaults;
 Ant.initialize(this)
 };
 
 Ant.defaults = {
 
-// Default options for the carousel
 elemVisible: 4, // Кол-во отображаемых элементов в карусели
 loop: true, // Бесконечное зацикливание карусели
 auto: true, // Автоматическая прокрутка
@@ -110,21 +107,18 @@ this.indicatorDotsAll[num].style.cssText = 'background-color:#556; cursor:defaul
 
 Ant.initialize = function(that) {
 
-// Constants
 that.elemCount = that.crslElements.length; // Количество элементов
 that.dotsVisible = that.elemCount; // Число видимых точек
 let elemStyle = window.getComputedStyle(that.crslElemFirst);
 that.elemWidth =
 that.crslElemFirst.offsetWidth + // Ширина элемента (без margin)
 parseInt(elemStyle.marginLeft) + parseInt(elemStyle.marginRight);
-
-// Variables
+  
 that.currentElement = 0; that.currentOffset = 0;
 that.touchPrev = true; that.touchNext = true;
 let xTouch, yTouch, xDiff, yDiff, stTime, mvTime;
 let bgTime = getTime();
 
-// Functions
 function getTime() {
 return new Date().getTime();
 };
@@ -137,7 +131,6 @@ bgTime = fnTime; that.elemNext()
 }, that.options.interval)
 };
 
-// Start initialization
 if(that.elemCount <= that.options.elemVisible) { // Отключить навигацию
 that.options.auto = false; that.options.touch = false;
 that.options.arrows = false; that.options.dots = false;
